@@ -9,6 +9,10 @@ const cart = [
       {
         rating: 5,
         text: 'Great noise cancelling feature!'
+      },
+      {
+        rating: 5,
+        text: "Love these!"
       }
     ]
   },
@@ -21,6 +25,10 @@ const cart = [
       {
         rating: 5,
         text: "Made dinner with this as soon as delivered. Delicious!"
+      },
+      {
+        rating: 4,
+        text: "It's a tad salty, but otherwise great."
       }
     ]
   },
@@ -80,5 +88,17 @@ const filterByCategory = function(){
 };
 
 // #2
-const
+const mapProductsAndReviews = function(array, position){
+  return array.map((p) => {
+    let index;
+    position === 'first' ? index = 0 : index = p.reviews.length - 1;
+    return `${p.item} (${p.reviews[index].text})`;
+  });
+};
 
+// #3
+const filterByReview = function(array, rating){
+  return array.filter((p) => {
+    return p.reviews.filter(r => r.rating === rating).length;
+  });
+};
